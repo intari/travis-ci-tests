@@ -36,12 +36,13 @@ before_install:
   # for gradle output style
   - export TERM=dumb
   # environment info
-  - #./gradlew -v
+  #- ./gradlew -v
   - uname -a
   - export ANDROID_HOME_BAD=`pwd`/android-sdk-linux
   - echo "BadSDK:$ANDROID_HOME_BAD"
+  - echo "Android Home:$ANDROID_HOME"
   # manually set sdk.dir variable, according to local paths
-  - echp "sdk.dir=/
+  #- echo "sdk.dir=//u
   - echo "sdk.dir=$ANDROID_HOME" > local.properties
   
 
@@ -54,6 +55,7 @@ before_script:
   - adb shell input keyevent 82 &
 script:
     - echo "Android SDK at $ANDROID_HOME"
+    
     
     
     
