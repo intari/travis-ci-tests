@@ -2,9 +2,10 @@
 
 language: android
 jdk: oraclejdk7
-#env:
-#  matrix:
-#    - ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+env:
+  matrix:
+    - ANDROID_TARGET=android-19  ANDROID_ABI=x86
+
     
 android:
   components:
@@ -23,12 +24,12 @@ android:
     - extra-google-google_play_services
     - extra-google-m2repository
     - extra-android-m2repository
-    #- addon-google_apis-google-17
+    - addon-google_apis-google-17
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-19
-    - sys-img-x86-android-17
+    - sys-img-x86-android-19
 
 
 
@@ -36,10 +37,8 @@ before_install:
   # for gradle output style
   - export TERM=dumb
   # environment info
-  #- ./gradlew -v
+  - ./gradlew -v
   - uname -a
-  - export ANDROID_HOME_BAD=`pwd`/android-sdk-linux
-  - echo "BadSDK:$ANDROID_HOME_BAD"
   - echo "Android Home:$ANDROID_HOME"
   # manually set sdk.dir variable, according to local paths
   - echo "sdk.dir=$ANDROID_HOME" > local.properties
@@ -52,7 +51,6 @@ before_script:
   - emulator -avd test -no-skin -no-audio -no-window &
   - adb wait-for-device
   - adb shell input keyevent 82 &
-
 script:
     - echo "Android SDK at $ANDROID_HOME"
     
