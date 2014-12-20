@@ -36,7 +36,7 @@ before_install:
   # for gradle output style
   - export TERM=dumb
   # environment info
-  - ./gradlew -v
+  - #./gradlew -v
   - uname -a
   - export ANDROID_HOME_BAD=`pwd`/android-sdk-linux
   - echo "BadSDK:$ANDROID_HOME_BAD"
